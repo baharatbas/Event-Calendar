@@ -6,5 +6,28 @@
   
 */
 
-"Etkinlik Takvimi" = "Event Calendar";
+"Etkinlik Takvimi" = "Etkinlik Takvimi";
+
+"Pzt" = "Pzt";
+"Sal" = "Sal";
+"Çar" = "Çar";
+"Perş" = "Perş";
+"Cum" = "Cum";
+"Cmt" = "Cmt";
+"Pzr" = "Pzr";
+
+
+"Ocak" = "Ocak";
+"Şubat" = "Şubat";
+"Mart" = "Mart";
+"Nisan" = "Nisan";
+"Mayıs" = "Mayıs";
+"Haziran" = "Haziran";
+"Temmuz" = "Temmuz";
+"Ağustos" = "Ağustos";
+"Eylül" = "Eylül";
+"Ekim" = "Ekim";
+"Kasım" = "Kasım";
+"Aralık" = "Aralık";
+
 

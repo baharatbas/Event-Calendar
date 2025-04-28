@@ -1,0 +1,15 @@
+{
+  "originHash" : "f2705382da726b7643f1c796813a286b30dbcf3fe82b25647acd4c698359829b",
+  "pins" : [
+    {
+      "identity" : "evencore",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/baharatbas/EvenCore.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "71517ebf3ff896b25be6ace9224d59ff68fb1c48"
+      }
+    }
+  ],
+  "version" : 3
+}

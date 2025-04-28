@@ -5,3 +5,29 @@
   Created by Bahar Atbaş on 26.04.2025.
   
 */
+"Etkinlik Takvimi" = "Veranstaltungskalender";
+
+
+"Pzt" = "Mont";
+"Sal" = "Die";
+"Çar" = "Mitt";
+"Perş" = "Don";
+"Cum" = "Fre";
+"Cmt" = "Sam";
+"Pzr" = "Son";
+
+
+
+"Ocak" = "Januar";
+"Şubat" = "Februar";
+"Mart" = "März";
+"Nisan" = "April";
+"Mayıs" = "Mai";
+"Haziran" = "Juni";
+"Temmuz" = "Juli";
+"Ağustos" = "August";
+"Eylül" = "September";
+"Ekim" = "Oktober";
+"Kasım" = "November";
+"Aralık" = "Dezember";
+
