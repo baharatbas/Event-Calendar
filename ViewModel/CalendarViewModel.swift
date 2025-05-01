@@ -10,8 +10,8 @@ import SwiftUI
 
 class CalendarViewModel : ObservableObject{
     @Published var events: [Event] = []
-    @State  var selectedDate = Date()
-    @State  var selectedDay: Int? = nil
+    @Published  var selectedDate = Date()
+    @Published  var selectedDay: Int? = nil
     private let calendar = Calendar.current
     private let aylar = [
         NSLocalizedString("Ocak", comment: "") ,
