@@ -85,4 +85,11 @@ class CalendarViewModel : ObservableObject{
             calendar.isDate($0.date, inSameDayAs: date)
         }
     }
+    //yeni etkinlik eklemek.
+    func addEvent(id : UUID ,title : String , date : Date  , catagory : String){
+        let newEvent = Event(id: id, title: title, date: date,  catagory: catagory)
+        events.append(newEvent)
+
+    }
+    
 }

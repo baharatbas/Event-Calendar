@@ -1,6 +1,12 @@
 import SwiftUI
 import EventCore
 struct ContentView: View {
+    @State private var showAddEvent = false
+    @State private var eventTitle = ""
+    @State private var eventDate = Date()
+    @State private var eventCatagory = ""
+    
+    
     @StateObject private var viewModel = CalendarViewModel()
     @AppStorage("isDarkMod") private var isDarkMod = false
     var body: some View {
@@ -63,6 +69,15 @@ struct ContentView: View {
                     }
                     
                 }
+                
+                Button(action: {showAddEvent = true }){
+                    Text("Etkinlik Ekle")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(8)
+                }
+                .padding()
             }
             .navigationTitle(NSLocalizedString("Etkinlik Takvimi", comment: ""))
                 .frame(maxWidth: .infinity)
