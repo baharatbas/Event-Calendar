@@ -28,19 +28,19 @@ struct ContentView: View {
                     Button(action: {viewModel.oncekiAy()}) {
                         Image(systemName: "chevron.left")
                             .font(.title2)
-                            .foregroundColor(.green)
+                            .foregroundColor(.blue)
                             .bold()
                     }
                     
                     Spacer()
                     Text("\(viewModel.ayAdiniGetir()) \(viewModel.yılGetir())")
-                        .foregroundColor(.green)
+                        .foregroundColor(.blue)
                         .bold()
                     Spacer()
                     Button(action: {viewModel.sonrakiAy()}) {
                         Image(systemName: "chevron.right")
                             .font(.title2)
-                            .foregroundColor(.green)
+                            .foregroundColor(.blue)
                             .bold()
                     }
                 }.padding()
@@ -60,7 +60,7 @@ struct ContentView: View {
                                             VStack {
                                                 Text("\(gün)")
                                                     .padding(8)
-                                                    .background(viewModel.gunuKontrolEt(gün) ? Color.green : (viewModel.selectedDay == gün ? Color.gray.opacity(0.3) : Color.clear))
+                                                    .background(viewModel.gunuKontrolEt(gün) ? Color.blue : (viewModel.selectedDay == gün ? Color.gray.opacity(0.3) : Color.clear))
                                                     .clipShape(Circle())
                                                     .foregroundColor(viewModel.gunuKontrolEt(gün) ? .white : .primary)
                             }
@@ -74,13 +74,51 @@ struct ContentView: View {
                     Text("Etkinlik Ekle")
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.green)
+                        .background(Color.blue)
                         .cornerRadius(8)
                 }
                 .padding()
             }
             .navigationTitle(NSLocalizedString("Etkinlik Takvimi", comment: ""))
                 .frame(maxWidth: .infinity)
+                .sheet(isPresented: $showAddEvent){
+                    VStack{
+                        TextField("Etkinlik Başlığı" , text: $eventTitle)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        
+                            .padding()
+                        
+                        DatePicker("Tarih" ,selection: $eventDate , displayedComponents: [.date])
+                            .datePickerStyle(GraphicalDatePickerStyle())
+                            .padding()
+                        
+                        TextField("Katagori (isteğe Bağlı) " , text: $eventCatagory)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding()
+                        HStack{
+                            Button("Kaydet"){
+                                viewModel.addEvent(id: UUID(), title: eventTitle, date: eventDate, catagory: eventCatagory)
+                                eventTitle = ""
+                                eventCatagory = ""
+                                showAddEvent = false
+                            }
+                            .foregroundColor(.white)
+                            .padding()
+                            .font(.title2)
+                            .background(Color.blue)
+                            .cornerRadius(5)
+                            
+                            Button("İptal"){
+                                showAddEvent = true
+                            }
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .padding()
+                            .background(Color.red)
+                            .cornerRadius(5)
+                        }
+                    }
+                }
                 
         }
         .padding()
