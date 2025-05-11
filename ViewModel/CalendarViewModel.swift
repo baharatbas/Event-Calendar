@@ -6,12 +6,14 @@
 //
 import Foundation
 import SwiftUI
+import CoreData
 
 
 class CalendarViewModel : ObservableObject{
-    @Published var events: [Event] = []
+    @Published var events: [AppEvent] = []
     @Published  var selectedDate = Date()
     @Published  var selectedDay: Int? = nil
+    @Published  var hoverDay: Int? = nil
     private let calendar = Calendar.current
     private let aylar = [
         NSLocalizedString("Ocak", comment: "") ,
@@ -79,7 +81,7 @@ class CalendarViewModel : ObservableObject{
          return !eventsForDate(targetDate ?? selectedDate).isEmpty
         
     }
-    func eventsForDate(_ date: Date) -> [Event] {
+    func eventsForDate(_ date: Date) -> [AppEvent] {
         let calendar = Calendar.current
         return events.filter {
             calendar.isDate($0.date, inSameDayAs: date)
@@ -87,7 +89,7 @@ class CalendarViewModel : ObservableObject{
     }
     //yeni etkinlik eklemek.
     func addEvent(id : UUID ,title : String , date : Date  , catagory : String){
-        let newEvent = Event(id: id, title: title, date: date,  catagory: catagory)
+        let newEvent = AppEvent(id: id, title: title, date: date,  catagory: catagory)
         events.append(newEvent)
 
     }

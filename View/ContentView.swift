@@ -54,23 +54,41 @@ struct ContentView: View {
             }
                 }
         .padding(.horizontal)
+                
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
                     ForEach(viewModel.ayinGunleri(), id: \.self) { gün in
-                                        if gün > 0 {
-                                            VStack {
-                                                Text("\(gün)")
-                                                    .padding(8)
-                                                    .background(viewModel.gunuKontrolEt(gün) ? Color.blue : (viewModel.selectedDay == gün ? Color.gray.opacity(0.3) : Color.clear))
-                                                    .clipShape(Circle())
-                                                    .foregroundColor(viewModel.gunuKontrolEt(gün) ? .white : .primary)
+                        if gün > 0 {
+                            VStack {
+                                Text("\(gün)")
+                                    .padding(8)
+                                    .background(
+                                        Group {
+                                            if viewModel.gunuKontrolEt(gün) && viewModel.selectedDay != gün{
+                                                Color.gray
+                                            } else if viewModel.selectedDay == gün {
+                                                    Color.blue
+                                            }else if viewModel.hoverDay == gün {
+                                                Color.blue.opacity(0.7)
+                                            }else{
+                                                Color.clear
+                                            }
+                            
+                                        }
+                                    )
+                                    .clipShape(Circle())
+                                    .foregroundColor((viewModel.selectedDay == gün) ? .white : .primary)
+                                    .onTapGesture {
+                                        viewModel.selectedDay = gün
+                                    }
+                                    .onHover { isHovered in
+                                        viewModel.hoverDay = isHovered ? gün : nil
+                                    }
                             }
                         }
-                        
                     }
-                    
                 }
                 
-                Button(action: {showAddEvent = true }){
+                Button(action: {showAddEvent = true  }){ // true dediğimiz için ekran açılır.
                     Text("Etkinlik Ekle")
                         .foregroundColor(.white)
                         .padding()
@@ -81,6 +99,8 @@ struct ContentView: View {
             }
             .navigationTitle(NSLocalizedString("Etkinlik Takvimi", comment: ""))
                 .frame(maxWidth: .infinity)
+            
+            //modal'ın içerisinde nelerin mevcut olacağını sheet ile belirleriz , oluştururuz.
                 .sheet(isPresented: $showAddEvent){
                     VStack{
                         TextField("Etkinlik Başlığı" , text: $eventTitle)
@@ -100,7 +120,7 @@ struct ContentView: View {
                                 viewModel.addEvent(id: UUID(), title: eventTitle, date: eventDate, catagory: eventCatagory)
                                 eventTitle = ""
                                 eventCatagory = ""
-                                showAddEvent = false
+                                showAddEvent = false //modal kapanır
                             }
                             .foregroundColor(.white)
                             .padding()
@@ -109,7 +129,7 @@ struct ContentView: View {
                             .cornerRadius(5)
                             
                             Button("İptal"){
-                                showAddEvent = true
+                                showAddEvent = false //modal kapanır
                             }
                             .foregroundColor(.white)
                             .font(.title2)

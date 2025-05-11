@@ -12,7 +12,7 @@ enum EventCatagory : String, Codable, CaseIterable {
     case personel = "Kişisel"
     case holiday = "Tatil"
 }
-struct Event : Identifiable , Codable{
+struct AppEvent : Identifiable , Codable{
     
     let id : UUID
     var title : String
