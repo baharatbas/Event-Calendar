@@ -8,6 +8,9 @@
 
 import Foundation
 import CoreData
+import SwiftUI
+
+
 
 @objc(Event)
 public class Event: NSManagedObject {

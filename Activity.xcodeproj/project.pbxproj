@@ -12,6 +12,7 @@
 		82844B732DD0D0A800264067 /* ActivityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82844B712DD0D0A800264067 /* ActivityModel.xcdatamodeld */; };
 		82844B762DD0D72000264067 /* Event+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82844B742DD0D72000264067 /* Event+CoreDataClass.swift */; };
 		82844B772DD0D72000264067 /* Event+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82844B752DD0D72000264067 /* Event+CoreDataProperties.swift */; };
+		82844B792DD1114600264067 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82844B782DD1114600264067 /* PersistenceController.swift */; };
 		82D3B33F2DB99163000C59C4 /* ActivityApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3B33E2DB99163000C59C4 /* ActivityApp.swift */; };
 		82D3B3412DB99163000C59C4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3B3402DB99163000C59C4 /* ContentView.swift */; };
 		82D3B3432DB99165000C59C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82D3B3422DB99165000C59C4 /* Assets.xcassets */; };
@@ -20,7 +21,7 @@
 		82D3B35A2DB99165000C59C4 /* ActivityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3B3592DB99165000C59C4 /* ActivityUITests.swift */; };
 		82D3B35C2DB99165000C59C4 /* ActivityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3B35B2DB99165000C59C4 /* ActivityUITestsLaunchTests.swift */; };
 		82E326272DBF6C6A0099C532 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E326262DBF6C6A0099C532 /* CalendarViewModel.swift */; };
-		82E3262A2DBF73920099C532 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E326292DBF73920099C532 /* Event.swift */; };
+		82E3262A2DBF73920099C532 /* AppEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E326292DBF73920099C532 /* AppEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		82844B722DD0D0A800264067 /* ActivityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityModel.xcdatamodel; sourceTree = "<group>"; };
 		82844B742DD0D72000264067 /* Event+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataClass.swift"; sourceTree = "<group>"; };
 		82844B752DD0D72000264067 /* Event+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		82844B782DD1114600264067 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		82D3B33B2DB99163000C59C4 /* Activity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Activity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D3B33E2DB99163000C59C4 /* ActivityApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityApp.swift; sourceTree = "<group>"; };
 		82D3B3402DB99163000C59C4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,7 +59,7 @@
 		82D3B3592DB99165000C59C4 /* ActivityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUITests.swift; sourceTree = "<group>"; };
 		82D3B35B2DB99165000C59C4 /* ActivityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		82E326262DBF6C6A0099C532 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		82E326292DBF73920099C532 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		82E326292DBF73920099C532 /* AppEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvent.swift; sourceTree = "<group>"; };
 		82E8C0842DBD3135002E9942 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				82D3B33E2DB99163000C59C4 /* ActivityApp.swift */,
+				82844B782DD1114600264067 /* PersistenceController.swift */,
 				82D3B3422DB99165000C59C4 /* Assets.xcassets */,
 				82D3B3442DB99165000C59C4 /* Preview Content */,
 			);
@@ -160,7 +163,7 @@
 		82D3B36A2DBA5219000C59C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				82E326292DBF73920099C532 /* Event.swift */,
+				82E326292DBF73920099C532 /* AppEvent.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -322,11 +325,12 @@
 			files = (
 				82844B762DD0D72000264067 /* Event+CoreDataClass.swift in Sources */,
 				82844B772DD0D72000264067 /* Event+CoreDataProperties.swift in Sources */,
-				82E3262A2DBF73920099C532 /* Event.swift in Sources */,
+				82E3262A2DBF73920099C532 /* AppEvent.swift in Sources */,
 				82E326272DBF6C6A0099C532 /* CalendarViewModel.swift in Sources */,
 				82D3B3412DB99163000C59C4 /* ContentView.swift in Sources */,
 				82844B732DD0D0A800264067 /* ActivityModel.xcdatamodeld in Sources */,
 				82D3B33F2DB99163000C59C4 /* ActivityApp.swift in Sources */,
+				82844B792DD1114600264067 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,14 +1,25 @@
 import SwiftUI
+import CoreData
 import EventCore
 struct ContentView: View {
+    @Environment(\.managedObjectContext) private var viewContext
+    
+  
+    
     @State private var showAddEvent = false
     @State private var eventTitle = ""
     @State private var eventDate = Date()
     @State private var eventCatagory = ""
     
-    
     @StateObject private var viewModel = CalendarViewModel()
     @AppStorage("isDarkMod") private var isDarkMod = false
+    
+    
+    @FetchRequest(
+           sortDescriptors: [NSSortDescriptor(keyPath: \Event.date, ascending: true)],
+           animation: .default)
+       private var events: FetchedResults<Event>
+    
     var body: some View {
         NavigationView {
             VStack{
@@ -96,6 +107,13 @@ struct ContentView: View {
                         .cornerRadius(8)
                 }
                 .padding()
+                
+                
+             
+                
+                
+                
+                
             }
             .navigationTitle(NSLocalizedString("Etkinlik Takvimi", comment: ""))
                 .frame(maxWidth: .infinity)
