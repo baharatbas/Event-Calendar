@@ -1,17 +1,18 @@
-//
-//  ActivityApp.swift
-//  Activity
-//
-//  Created by Bahar Atbaş on 24.04.2025.
-//
+
+
+
 
 import SwiftUI
+import CoreData
 
 @main
 struct ActivityApp: App {
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

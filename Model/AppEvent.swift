@@ -6,12 +6,7 @@
 //
 
 import Foundation
-enum EventCatagory : String, Codable, CaseIterable {
-    
-    case work = "İş"
-    case personel = "Kişisel"
-    case holiday = "Tatil"
-}
+
 struct AppEvent : Identifiable , Codable{
     
     let id : UUID

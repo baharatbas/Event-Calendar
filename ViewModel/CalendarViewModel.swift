@@ -14,6 +14,30 @@ class CalendarViewModel : ObservableObject{
     @Published  var selectedDate = Date()
     @Published  var selectedDay: Int? = nil
     @Published  var hoverDay: Int? = nil
+    
+    //CoreData işlemleri 
+    var contex : NSManagedObjectContext!
+    //yeni etkinlik eklemek.
+    func addEvent(id : UUID ,title : String , date : Date  , catagory : String){
+        guard let contex = contex else { return }
+         
+        let newEvent = Event(context: contex)
+        newEvent.id = id
+        newEvent.title = title
+        newEvent.catagory = catagory
+        newEvent.date = date
+        
+        do{
+            try contex.save()
+            print("✅ Etkinlik başarıyla kaydedildi.")
+            
+        }catch{
+            print("❌ Etkinlik kaydedilirken hata oluştu: \(error.localizedDescription)")
+        }
+
+    }
+
+    
     private let calendar = Calendar.current
     private let aylar = [
         NSLocalizedString("Ocak", comment: "") ,
@@ -86,12 +110,6 @@ class CalendarViewModel : ObservableObject{
         return events.filter {
             calendar.isDate($0.date, inSameDayAs: date)
         }
-    }
-    //yeni etkinlik eklemek.
-    func addEvent(id : UUID ,title : String , date : Date  , catagory : String){
-        let newEvent = AppEvent(id: id, title: title, date: date,  catagory: catagory)
-        events.append(newEvent)
-
     }
     
 }
