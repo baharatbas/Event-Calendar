@@ -10,6 +10,8 @@ struct ContentView: View {
     @State private var eventTitle = ""
     @State private var eventDate = Date()
     @State private var eventCatagory = ""
+    @State private var showAlert =  false
+    @State private var alertTitle = ""
     
     @StateObject private var viewModel = CalendarViewModel()
     @AppStorage("isDarkMod") private var isDarkMod = false
@@ -123,7 +125,6 @@ struct ContentView: View {
                     VStack{
                         TextField("Etkinlik Başlığı" , text: $eventTitle)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
                             .padding()
                         
                         DatePicker("Tarih" ,selection: $eventDate , displayedComponents: [.date])
@@ -135,10 +136,17 @@ struct ContentView: View {
                             .padding()
                         HStack{
                             Button("Kaydet"){
-                                viewModel.addEvent(id: UUID(), title: eventTitle, date: eventDate, catagory: eventCatagory)
-                                eventTitle = ""
-                                eventCatagory = ""
-                                showAddEvent = false //modal kapanır
+                                if !eventTitle.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                                    viewModel.addEvent(id: UUID(), title: eventTitle, date: eventDate, catagory: eventCatagory)
+                                    eventTitle = ""
+                                    eventCatagory = ""
+                                    showAddEvent = false //modal kapanır
+                                }else{
+                                    alertTitle = "Etkinlik başlığı boş bırakılamaz"
+                                    showAlert = true
+                                }
+                            }.alert(isPresented: $showAlert){
+                                Alert(title: Text("Hata") , message: Text(alertTitle), dismissButton: .default(Text("Tamam")))
                             }
                             .foregroundColor(.white)
                             .padding()
