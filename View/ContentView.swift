@@ -176,3 +176,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+//core data işlemleri
+
