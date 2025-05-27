@@ -10,6 +10,7 @@ import CoreData
 
 
 class CalendarViewModel : ObservableObject{
+    @Published var currentDate = Date()
     @Published var events: [AppEvent] = []
     @Published  var selectedDate = Date()
     @Published  var selectedDay: Int? = nil
@@ -18,23 +19,19 @@ class CalendarViewModel : ObservableObject{
     //CoreData işlemleri 
     var contex : NSManagedObjectContext!
     //yeni etkinlik eklemek.
-    func addEvent(id : UUID ,title : String , date : Date  , catagory : String){
-        guard let contex = contex else { return }
-         
-        let newEvent = Event(context: contex)
+    func addEvent(id: UUID, title: String, date: Date, catagory: String, context: NSManagedObjectContext) {
+        let newEvent = Event(context: context)
         newEvent.id = id
         newEvent.title = title
-        newEvent.catagory = catagory
         newEvent.date = date
+        newEvent.catagory = catagory.isEmpty ? nil : catagory
         
-        do{
-            try contex.save()
-            print("✅ Etkinlik başarıyla kaydedildi.")
-            
-        }catch{
+        do {
+            try context.save()
+            print("✅ Etkinlik başarıyla kaydedildi: \(title), Tarih: \(date), Kategori: \(catagory)")
+        } catch {
             print("❌ Etkinlik kaydedilirken hata oluştu: \(error.localizedDescription)")
         }
-
     }
 
     
