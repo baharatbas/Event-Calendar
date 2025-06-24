@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82158CD62E0AAB800096B67C /* Users+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82158CD42E0AAB800096B67C /* Users+CoreDataClass.swift */; };
+		82158CD72E0AAB800096B67C /* Users+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82158CD52E0AAB800096B67C /* Users+CoreDataProperties.swift */; };
+		82158CDB2E0AAEFB0096B67C /* PersistenceControllerUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82158CDA2E0AAEFB0096B67C /* PersistenceControllerUsers.swift */; };
 		8278AEE62DBF7A1000E6A7CB /* EventCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8278AEE52DBF7A1000E6A7CB /* EventCore */; };
 		827CC25C2DBD2CFC0042FB6A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 827CC25A2DBD2CFC0042FB6A /* Localizable.strings */; };
 		82844B732DD0D0A800264067 /* ActivityModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82844B712DD0D0A800264067 /* ActivityModel.xcdatamodeld */; };
@@ -22,6 +25,8 @@
 		82D3B35C2DB99165000C59C4 /* ActivityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D3B35B2DB99165000C59C4 /* ActivityUITestsLaunchTests.swift */; };
 		82E326272DBF6C6A0099C532 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E326262DBF6C6A0099C532 /* CalendarViewModel.swift */; };
 		82E3262A2DBF73920099C532 /* AppEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E326292DBF73920099C532 /* AppEvent.swift */; };
+		82EE06C52E0AA3D60039E80B /* users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE06C42E0AA3D60039E80B /* users.swift */; };
+		82EE06C82E0AAA610039E80B /* UsersModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82EE06C62E0AAA610039E80B /* UsersModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82158CD42E0AAB800096B67C /* Users+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataClass.swift"; sourceTree = "<group>"; };
+		82158CD52E0AAB800096B67C /* Users+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Users+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		82158CDA2E0AAEFB0096B67C /* PersistenceControllerUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceControllerUsers.swift; sourceTree = "<group>"; };
 		827CC25B2DBD2CFC0042FB6A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		827CC25D2DBD2DC70042FB6A /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		82844B722DD0D0A800264067 /* ActivityModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ActivityModel.xcdatamodel; sourceTree = "<group>"; };
@@ -61,6 +69,8 @@
 		82E326262DBF6C6A0099C532 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		82E326292DBF73920099C532 /* AppEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvent.swift; sourceTree = "<group>"; };
 		82E8C0842DBD3135002E9942 /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		82EE06C42E0AA3D60039E80B /* users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = users.swift; sourceTree = "<group>"; };
+		82EE06C72E0AAA610039E80B /* UsersModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UsersModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +99,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82158CD92E0AAD3D0096B67C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				82158CD42E0AAB800096B67C /* Users+CoreDataClass.swift */,
+				82158CD52E0AAB800096B67C /* Users+CoreDataProperties.swift */,
+				82EE06C62E0AAA610039E80B /* UsersModel.xcdatamodeld */,
+				82844B742DD0D72000264067 /* Event+CoreDataClass.swift */,
+				82844B752DD0D72000264067 /* Event+CoreDataProperties.swift */,
+				82844B712DD0D0A800264067 /* ActivityModel.xcdatamodeld */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		827CC2592DBD2CD00042FB6A /* Localization */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,9 +123,7 @@
 		82D3B3322DB99163000C59C4 = {
 			isa = PBXGroup;
 			children = (
-				82844B742DD0D72000264067 /* Event+CoreDataClass.swift */,
-				82844B752DD0D72000264067 /* Event+CoreDataProperties.swift */,
-				82844B712DD0D0A800264067 /* ActivityModel.xcdatamodeld */,
+				82158CD92E0AAD3D0096B67C /* New Group */,
 				827CC2592DBD2CD00042FB6A /* Localization */,
 				82D3B36C2DBA5238000C59C4 /* ViewModel */,
 				82D3B36B2DBA5231000C59C4 /* View */,
@@ -129,8 +150,7 @@
 			children = (
 				82D3B33E2DB99163000C59C4 /* ActivityApp.swift */,
 				82844B782DD1114600264067 /* PersistenceController.swift */,
-				82D3B3422DB99165000C59C4 /* Assets.xcassets */,
-				82D3B3442DB99165000C59C4 /* Preview Content */,
+				82158CDA2E0AAEFB0096B67C /* PersistenceControllerUsers.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -139,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				82D3B3452DB99165000C59C4 /* Preview Assets.xcassets */,
+				82D3B3422DB99165000C59C4 /* Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -164,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				82E326292DBF73920099C532 /* AppEvent.swift */,
+				82EE06C42E0AA3D60039E80B /* users.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				82D3B3402DB99163000C59C4 /* ContentView.swift */,
+				82D3B3442DB99165000C59C4 /* Preview Content */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -251,7 +274,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1600;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1630;
 				TargetAttributes = {
 					82D3B33A2DB99163000C59C4 = {
 						CreatedOnToolsVersion = 16.0;
@@ -324,10 +347,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				82844B762DD0D72000264067 /* Event+CoreDataClass.swift in Sources */,
+				82EE06C52E0AA3D60039E80B /* users.swift in Sources */,
 				82844B772DD0D72000264067 /* Event+CoreDataProperties.swift in Sources */,
 				82E3262A2DBF73920099C532 /* AppEvent.swift in Sources */,
+				82158CD62E0AAB800096B67C /* Users+CoreDataClass.swift in Sources */,
+				82158CDB2E0AAEFB0096B67C /* PersistenceControllerUsers.swift in Sources */,
+				82158CD72E0AAB800096B67C /* Users+CoreDataProperties.swift in Sources */,
 				82E326272DBF6C6A0099C532 /* CalendarViewModel.swift in Sources */,
 				82D3B3412DB99163000C59C4 /* ContentView.swift in Sources */,
+				82EE06C82E0AAA610039E80B /* UsersModel.xcdatamodeld in Sources */,
 				82844B732DD0D0A800264067 /* ActivityModel.xcdatamodeld in Sources */,
 				82D3B33F2DB99163000C59C4 /* ActivityApp.swift in Sources */,
 				82844B792DD1114600264067 /* PersistenceController.swift in Sources */,
@@ -416,6 +444,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = A8483PP4UH;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -480,6 +509,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = A8483PP4UH;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -508,8 +538,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Activity/Preview Content\"";
-				DEVELOPMENT_TEAM = A8483PP4UH;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -537,8 +566,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Activity/Preview Content\"";
-				DEVELOPMENT_TEAM = A8483PP4UH;
+				DEVELOPMENT_ASSET_PATHS = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -565,7 +593,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8483PP4UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
@@ -584,7 +611,6 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8483PP4UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				MARKETING_VERSION = 1.0;
@@ -602,7 +628,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8483PP4UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = baharatbas.ActivityUITests;
@@ -619,7 +644,6 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8483PP4UH;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = baharatbas.ActivityUITests;
@@ -699,6 +723,16 @@
 			);
 			currentVersion = 82844B722DD0D0A800264067 /* ActivityModel.xcdatamodel */;
 			path = ActivityModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		82EE06C62E0AAA610039E80B /* UsersModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				82EE06C72E0AAA610039E80B /* UsersModel.xcdatamodel */,
+			);
+			currentVersion = 82EE06C72E0AAA610039E80B /* UsersModel.xcdatamodel */;
+			path = UsersModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

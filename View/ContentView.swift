@@ -1,39 +1,80 @@
 import SwiftUI
 import CoreData
-import EventCore
+
+
 struct ContentView: View {
+    //core data ve swiftuı entegrasyonunu yapar.
     @Environment(\.managedObjectContext) private var viewContext
+    //calendarViewModel() deki fonksiyonları kullanmamız için referans alıyoruz.
     @StateObject private var viewModel = CalendarViewModel()
+    
+    //userDefaults(uygulamayı kapatsak bile küçük verileri saklar içerisinde) da isDarkMod diye değişken saklar
     @AppStorage("isDarkMod") private var isDarkMod = false
+    @State private var showAddUsers = false
+    @State private var userConfirmPasword = ""
+    @State private var userSurname = ""
+    @State private var userName = ""
+    @State private var userPasword = ""
+    @State private var showAddEvent = false //gösterilen etkinlik
+    @State private var eventTitle = "" //etkinlik başlığı
+    @State private var eventDate = Date() //etkinliğin tarihi
+    @State private var eventCatagory = "" //etkinliğin katagorisi
+    @State private var showAlert =  false //uyarı mesajı
+    @State private var alertTitle = "" //uyarı mesajının başlığı
     
-    @State private var showAddEvent = false
-    @State private var eventTitle = ""
-    @State private var eventDate = Date()
-    @State private var eventCatagory = ""
-    @State private var showAlert =  false
-    @State private var alertTitle = ""
     
+    
+    
+    
+    @FetchRequest(
+        entity: UsersEntity.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \UsersEntity.name, ascending: true)],
+        animation: .default)
+    private var users: FetchedResults<UsersEntity>
+
+    @FetchRequest(
+        entity: Event.entity(),
+        sortDescriptors: [NSSortDescriptor(keyPath: \Event.date, ascending: true)],
+        animation: .default)
+    private var events: FetchedResults<Event>
+
+    
+    
+    
+    
+    
+    /*
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \UsersEntity.name, ascending: true)],
+        animation: .default)
+    private var users: FetchedResults<UsersEntity>
+    
+   
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Event.date, ascending: true)],
         animation: .default)
-    private var events: FetchedResults<Event>
+    private var events: FetchedResults<Event>*/
     
     var body: some View {
         NavigationView {
             VStack{
-                
                 VStack{
+                   
+                    //bir adet toogle ekliyoruz 2 seçenekli geçiş buttonu
                     Toggle(isOn: $isDarkMod){
+                        //eğer isDarkMod true ise ıcon oxlarak gece ver false ise güneş iconu ver.
                         Image(systemName: isDarkMod ? "moon.stars.fill" : "sun.max")
                             .foregroundColor(.primary)
                     }.toggleStyle(.switch)
                         .frame(width: 150,height: 50)
                     
-                }.preferredColorScheme(isDarkMod ? .dark : .light)
+                }.preferredColorScheme(isDarkMod ? .dark : .light)// değişken true ise koyu ekran ile başlat false ise değişken açık ekranla başlat
                     .animation(.easeInOut , value: isDarkMod)
                 
                 
+                
+                //2 adet butona sahip yan yana bir şekilde ileri ve geri ıconlar bulunuyor. ortalarında ise ay ve yıl bulunuyor
                 HStack{
                     Button(action: {viewModel.oncekiAy()}) {
                         Image(systemName: "chevron.left")
@@ -55,6 +96,9 @@ struct ContentView: View {
                     }
                 }.padding()
                 
+                
+                
+                // günlerin isimlerini tek tek alır foreach ile teker teker gün e aktarır bu aldığı günleri localize ederek text e basar tek tek localize edemezse "" basar id :\.self -> işlemi hepsinin kendine ait bir benzersiz kimliği olması içindir.
                 HStack{
                     ForEach(["Pzt" , "Sal" , "Çar" , "Perş" , "Cum" , "cmt" ,"pzr "] , id :\.self) { gün in
                         Text(NSLocalizedString(gün, comment: ""))
@@ -65,6 +109,12 @@ struct ContentView: View {
                 }
                 .padding(.horizontal)
                 
+                
+                
+                /*  
+                
+                
+                */
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7), spacing: 10) {
                     ForEach(viewModel.ayinGunleri(), id: \.self) { gün in
                         if gün > 0 {
@@ -97,6 +147,16 @@ struct ContentView: View {
                         }
                     }
                 }
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
                 
                 Button(action: {showAddEvent = true  }){ // true dediğimiz için ekran açılır.
                     Text("Etkinlik Ekle")
@@ -179,13 +239,80 @@ struct ContentView: View {
                         .background(Color.red)
                         .cornerRadius(5)
                     }
+                    
                 }
+                
             }
             
             
         }
-        .padding()
-    }
+        Button(action: {showAddUsers = true}){
+            Image(systemName: "person.fill")
+                .foregroundColor(.blue)
+                
+        }
+        .sheet(isPresented:$showAddUsers){
+            Text("Kullanıcı Kayıt Formu")
+                .font(.title)
+                .foregroundColor(.orange)
+                .padding()
+            VStack{
+                HStack{
+                    Text("Kullanıcı Adı :")
+                        .font(.callout)
+                    TextField("Kullanıcı Adı", text: $userName)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                }
+                HStack{
+                    Text("Şifre :")
+                        .font(.callout)
+                    SecureField("Şifre", text: $userPasword)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                }
+                HStack{
+                    Text("Şifre :")
+                        .font(.callout)
+                    SecureField("Şifre", text: $userConfirmPasword)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                }
+            }
+            Button("Kayıt Ol"){
+                guard userPasword == userConfirmPasword else{
+                    alertTitle = "şifreler uyuşmuyor"
+                    showAlert = true
+                    return
+                }
+                viewModel.addUsers(
+                    id: UUID(),
+                    name: userName,
+                    username: userName ,
+                    password: userPasword,
+                    confirmPassword: userConfirmPasword,
+                    contexUser: viewContext)
+                
+                userName = ""
+                   userPasword = ""
+                   userConfirmPasword = ""
+                   showAddUsers = false // sheet'i kapat
+               }
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("Hata"), message: Text(alertTitle), dismissButton: .default(Text("Tamam")))
+            }
+                
+            }
+            .foregroundColor(.white)
+            .padding()
+            .font(.title2)
+            .background(Color.blue)
+            .cornerRadius(12)
+
+            
+        }
+  
+    
     private func selectedDate(gün: Int) -> Date {
             let components = Calendar.current.dateComponents([.year, .month], from: viewModel.currentDate)
             var dateComponents = DateComponents()
@@ -203,8 +330,8 @@ struct ContentView: View {
                 print("etkinlik yok")
             }
         }
-    }
-}
+    }  }
+
 
 #Preview {
     ContentView().environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
